@@ -6,4 +6,3 @@ A group front end application that will allow users to search and view both rati
 
 ## Acceptance Criteria
 
-this is a change -Aidan
