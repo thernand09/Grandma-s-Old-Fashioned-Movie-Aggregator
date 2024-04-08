@@ -9,34 +9,44 @@
   </head>
 <body>
     <!-- Your content goes here -->
-    <header>
-        <h1>Grandma’s Old-Fashioned Web Development</h1>
+    <header class="hero">
+        <div class="hero-head">
+
+        </div>
+        <div class="hero-body">
+            <img class="hero-image" src="./assets/GrandmasOldFashionedWebDevelopment.png" alt="header image"></img>
+        </div>
     </header>
-    <nav>
+    <nav class="navbar">
         <ul>
-            <li><a href="#section1">Search Bar</a></li>
-            <li><a href="#section2">Home</a></li>
-            <!-- Add more navigation links as needed -->
+            <li class="navbar-item"><a class="page-nav-link" href="./results.html">Previous Results Page</a></li>
+            <button class="navbar-item button search-bar" id="modal-call-button">Create a Search</button>
+            <h3 class="title has-text-left">Grandma's Old-Fashioned Movie Agregator</h3>
         </ul>
     </nav>
 
     <main>
+        <modal>
+
+        </modal>
+
         <section id="section1">
             <h2>Section 1</h2>
             <p>This is the content of section 1.</p>
         </section>
+
         <section id="section2">
             <h2>Section 2</h2>
             <p>This is the content of section 2.</p>
         </section>
-        <!-- Add more sections as needed -->
+
     </main>
     
     <footer>
-        <p>&copy; Grandma’s Old-Fashioned. All rights reserved.</p>
+        <p>&copy; Grandma's Old-Fashioned Web Development. All rights reserved.</p>
     </footer>
-    <!-- You can include additional JavaScript files here -->
-    <!-- For example: <script src="script.js"></script> -->
+
     <script src="./assets/js/web.js"></script>
+
 </body>
 </html>
