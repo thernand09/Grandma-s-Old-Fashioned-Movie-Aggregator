@@ -21,20 +21,24 @@
     </header>
     <nav class="navbar">
         <h3 class="title has-text-left">Grandma's Old-Fashioned Movie Agregator</h3>
-        <button class="navbar-item button search-bar" id="modal-call-button">Create a Search</button>
+        <button class="navbar-item button search-bar js-modal-trigger" id="modal-call-button" data-target="modal">Create a Search</button>
     </nav>
 
     <main>
-        <modal class="modal-form">
-            <div>
-                <label for="movie-title">Movie title *</label>
-                <input type="text" name="movie-title" class="modal-input" id="movie-title" placeholder="Movie title" required>
+        <modal id="modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div>
+                        <label for="movie-title">Movie title *</label>
+                        <input type="text" name="Movie" class="modal-input" id="movie-title" placeholder="Movie title" required>
+                        <label for="imdb-id">Movie title</label>
+                        <input type="text" name="Movie" class="modal-input" id="imdb-id" placeholder="IMDB ID">
+                    </div>
+                    <button class="button" type="submit" id="modal-submit">Search</button>
+                </div>
             </div>
-            <div>
-                <label for="imdb-id">Movie title</label>
-                <input type="text" name="imdb-id" class="modal-input" id="imdb-title" placeholder="IMDB ID">
-            </div>
-            <button type="submit" id="modal-submit">Search</button>
+            <button class="modal-close is-large" aria-label="close"></button>
         </modal>
 
         <section id="section1">
