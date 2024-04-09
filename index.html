@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Grandma's Movie Aggregtor</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
   </head>
 <body>
     <!-- Your content goes here -->
@@ -14,20 +15,26 @@
 
         </div>
         <div class="hero-body">
-            <img class="hero-image" src="./assets/GrandmasOldFashionedWebDevelopment.png" alt="header image"></img>
+            <img class="hero-image" id="hero-wide" src="./assets/GrandmasOldFashionedWebDevelopmentWide.png" alt="header image"></img>
+            <img class="hero-image" id="hero-narrow" src="./assets/GrandmasOldFashionedWebDevelopment.png" alt="header image"></img>
         </div>
     </header>
     <nav class="navbar">
-        <ul>
-            <li class="navbar-item"><a class="page-nav-link" href="./results.html">Previous Results Page</a></li>
-            <button class="navbar-item button search-bar" id="modal-call-button">Create a Search</button>
-            <h3 class="title has-text-left">Grandma's Old-Fashioned Movie Agregator</h3>
-        </ul>
+        <h3 class="title has-text-left">Grandma's Old-Fashioned Movie Agregator</h3>
+        <button class="navbar-item button search-bar" id="modal-call-button">Create a Search</button>
     </nav>
 
     <main>
-        <modal>
-
+        <modal class="modal-form">
+            <div>
+                <label for="movie-title">Movie title *</label>
+                <input type="text" name="movie-title" class="modal-input" id="movie-title" placeholder="Movie title" required>
+            </div>
+            <div>
+                <label for="imdb-id">Movie title</label>
+                <input type="text" name="imdb-id" class="modal-input" id="imdb-title" placeholder="IMDB ID">
+            </div>
+            <button type="submit" id="modal-submit">Search</button>
         </modal>
 
         <section id="section1">
@@ -46,7 +53,8 @@
         <p>&copy; Grandma's Old-Fashioned Web Development. All rights reserved.</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script src="./assets/js/web.js"></script>
-
 </body>
 </html>
