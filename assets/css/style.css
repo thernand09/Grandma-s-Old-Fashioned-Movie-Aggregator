@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     --main-pink: #FFC8DD;
     --main-purple: #613f75;
     --background-purple: #CDB4DB;
