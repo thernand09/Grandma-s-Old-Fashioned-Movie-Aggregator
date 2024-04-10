@@ -8,80 +8,10 @@ modalButtonSubmit.addEventListener('click', function() {
   const movieImdbIdInput = document.getElementById('imdb-id').value.trim();
 
   fetchOmdb(movieTitleInput, movieImdbIdInput);
-  window.location.href = '/results.html';
+  // window.location.href = '/results.html';
 });
 
-//OMDB-API
-function fetchOmdb (movieTitleInput, movieImdbIdInput) {
-  let omdbUrl
-  let omdbPosterUrl
-  if (movieImdbIdInput) {
-    const omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
-    const omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
-  } else {
-    const omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
-    const omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
-  }
-
-  fetch(omdbUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Data:', data);
-      // Process the retrieved data
-      if (data.length === 0) {
-        const sectionOne = document.getElementById('section1');
-        const errorMessage = document.createElement('p');
-        errorMessage.textContent = "No media found. Please try a new search.";
-        sectionOne.appendChild(errorMessage);
-
-        return
-      } else {
-        var omdbData = JSON.stringify()
-      }
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-}
-
-//IMDB-OT
-fetch('https://search.imdbot.workers.dev/?tt=tt13667402')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Data:', data);
-    // Process the retrieved data
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
-
-//WatchOne
-fetch('https://api.watchmode.com/v1/title/345534/sources/?apiKey=Slfk8QtE1xiIN5s4RlZbV6RhrQNnJRjCt1W5sdqe')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Data:', data);
-    // Process the retrieved data
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
-
-// Modal form script
+// - Modal form script
 document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
   function openModal($el) {
@@ -124,3 +54,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// --------------------------- API Fetch Functions ---------------------------------
+
+// - OMDB-API
+// We'll want to get title (omdbData.title), year (omdbData.title), ratings (IDMB: (omdbData.ratings[0]),
+// RT: (omdbData.ratings[1]), Metacritic: (omdbData.ratings[2])), and maybe runtime? (omdbData.runtime)
+function fetchOmdb (movieTitleInput, movieImdbIdInput) {
+  let omdbUrl
+  let omdbPosterUrl
+  if (movieImdbIdInput) {
+    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
+    omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
+  } else {
+    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
+    omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
+  }
+
+  fetch(omdbUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('OMDB - Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('OMDB data:', data);
+      // Process the retrieved data
+      if (data.length === 0) {
+        const sectionOne = document.getElementById('section1');
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = "No media found. Please try a new search.";
+        sectionOne.appendChild(errorMessage);
+
+        return
+      } else {
+        var omdbData = JSON.stringify(data)
+        localStorage.setItem('omdbData', omdbData)
+      }
+    })
+    .catch(error => {
+      console.error('There was a problem with the OMDB fetch operation:', error);
+    });
+}
+
+// - IMDB-OT
+fetch('https://search.imdbot.workers.dev/?tt=tt13667402')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('IMDB-OT - Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('IMDB-OT data:', data);
+    // Process the retrieved data
+  })
+  .catch(error => {
+    console.error('There was a problem with the IMDB-OT fetch operation:', error);
+  });
+
+// - WatchOne -------------- Wanted to stop making requests in case we use our limit - Aidan
+//fetch('https://api.watchmode.com/v1/title/345534/sources/?apiKey=Slfk8QtE1xiIN5s4RlZbV6RhrQNnJRjCt1W5sdqe')
+//  .then(response => {
+//    if (!response.ok) {
+//////throw new Error('WatchOne - Network response was not ok');
+////}
+////return response.json();
+//})
+//.then(data => {
+////console.log('WatchOne data:', data);
+////// Process the retrieved data
+//})
+//.catch(error => {
+////console.error('There was a problem with the WatchOne fetch operation:', error);
+//});
