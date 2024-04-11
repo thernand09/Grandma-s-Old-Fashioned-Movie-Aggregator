@@ -8,7 +8,7 @@ modalButtonSubmit.addEventListener('click', function() {
   const movieImdbIdInput = document.getElementById('imdb-id').value.trim();
 
   fetchOmdb(movieTitleInput, movieImdbIdInput);
-  // window.location.href = '/results.html';
+  //window.location.href = '/results.html';
 });
 
 // - Modal form script
