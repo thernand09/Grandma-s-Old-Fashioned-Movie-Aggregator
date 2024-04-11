@@ -73,14 +73,46 @@ header {
     margin: 1% 2% 1% 0.5%;
 }
 
-.dummy-card {
+.card {
     background-color: var(--main-pink);
     width: 99%;
     margin: 0.5%;
 }
 
-.dummy-card-text {
+.card-text {
     margin: 1%
+}
+
+.card-title {
+
+}
+
+.year {
+
+}
+
+.ratings-title {
+
+}
+
+.ratings{
+
+}
+
+.imdbRating {
+
+}
+
+.rtRating {
+
+}
+
+.metacriticRating {
+
+}
+
+.runtime {
+    
 }
 
 #footer{
