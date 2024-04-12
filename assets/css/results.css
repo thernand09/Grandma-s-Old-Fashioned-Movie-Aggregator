@@ -9,6 +9,7 @@
     --accent-sky-blue: #A2D2FF;
     margin: 0;
     padding: 0;
+
 }
 
 header {
@@ -39,10 +40,10 @@ header {
     background-color: var(--main-purple);
     align-items: center;
     border-top: 0.25rem var(--accent-powder-blue) solid;
-    border-bottom: 0.25rem var(--accent-powder-blue) solid;
+    border-bottom: 0.25rem var(--main-pink) solid;
     display: flex;
     justify-content: space-between;
-    margin: -0.35rem 0 0.5rem 0
+    margin: -0.35rem 0 0 0
 }
 
 #back-button {
@@ -52,9 +53,15 @@ header {
     margin-right: 1%;
 }
 
+main {
+    background-color: var(--accent-powder-blue);
+}
+
 .content-wrapper {
-    width: 96vw;
+    width: auto;
     min-height: 40vh;
+    margin: 0;
+    padding: 0
 }
 
 #back-button:hover {
@@ -70,33 +77,41 @@ header {
 
 #searchResults {
     background-color: var(--accent-powder-blue);
-    margin: 1% 2% 1% 0.5%;
+    padding: 1%
 }
 
 .card {
     background-color: var(--main-pink);
-    width: 99%;
-    margin: 0.5%;
+    width: 98%;
+    padding: 1%;
+    margin: 0 1% 1% 1%;
+    color: var(--main-purple);
 }
 
-.card-text {
-    margin: 1%
+.poster {
+    max-width: 20%;
+}
+
+.card-info {
+    margin: 1%;
+    align-content: center;
 }
 
 .card-title {
-
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .year {
 
 }
 
-.ratings-title {
-
+.runtime {
+    margin-top: 2%;
 }
 
 .ratings{
-
+    margin-top: 2%;
 }
 
 .imdbRating {
@@ -111,12 +126,23 @@ header {
 
 }
 
-.runtime {
-    
+.card-plot {
+    margin: 1%;
+    align-content: center;
+}
+
+.streaming {
+    align-content: center;
 }
 
 #footer{
-    margin: 2%
+    padding: 2%;
+    text-align: center;
+    background-color: var(--accent-powder-blue);
+}
+
+#end-tag {
+    color: var(--main-purple);
 }
 
 @media screen and (min-width:801px) {

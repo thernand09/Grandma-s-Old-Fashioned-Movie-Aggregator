@@ -1,4 +1,7 @@
 const OMDB_API_KEY = 'a8e2098d'
+
+var omdbDataHistory = JSON.parse(localStorage.getItem('omdbDataHistory')) || [];
+
 const modalButtonSubmit = document.getElementById('modal-submit');
 
 modalButtonSubmit.addEventListener('click', function() {
@@ -8,7 +11,7 @@ modalButtonSubmit.addEventListener('click', function() {
   const movieImdbIdInput = document.getElementById('imdb-id').value.trim();
 
   fetchOmdb(movieTitleInput, movieImdbIdInput);
-  //window.location.href = '/results.html';
+  window.location.href = '/results.html';
 });
 
 // - Modal form script
@@ -89,6 +92,12 @@ function fetchOmdb (movieTitleInput, movieImdbIdInput) {
 
         return
       } else {
+        omdbHistory.unshift(data)
+
+        if (omdbDataHistory.length > 4) {
+          omdbDataHistory = searchHistory.slice(0, 4);
+        }
+
         var omdbData = JSON.stringify(data)
         localStorage.setItem('omdbData', omdbData)
       }
@@ -97,22 +106,6 @@ function fetchOmdb (movieTitleInput, movieImdbIdInput) {
       console.error('There was a problem with the OMDB fetch operation:', error);
     });
 }
-
-// - IMDB-OT
-fetch('https://search.imdbot.workers.dev/?tt=tt13667402')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('IMDB-OT - Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('IMDB-OT data:', data);
-    // Process the retrieved data
-  })
-  .catch(error => {
-    console.error('There was a problem with the IMDB-OT fetch operation:', error);
-  });
 
 // - WatchOne -------------- Wanted to stop making requests in case we use our limit - Aidan
 //fetch('https://api.watchmode.com/v1/title/345534/sources/?apiKey=Slfk8QtE1xiIN5s4RlZbV6RhrQNnJRjCt1W5sdqe')
@@ -129,3 +122,33 @@ fetch('https://search.imdbot.workers.dev/?tt=tt13667402')
 //.catch(error => {
 ////console.error('There was a problem with the WatchOne fetch operation:', error);
 //});
+
+// ------------------------- Displaying Past Search Data for Flavor -------------------------------------
+function displayPreviousSearches() {
+  var previousSearchesContainer = document.getElementById('previousSearches');
+
+  previousSearchesContainer.innerHTML = '';
+
+  omdbDataHistory.forEach(function(omdbData) {
+    var poster = omdbData.Poster;
+    var title = omdbData.Title;
+
+    var searchResultContainer = document.createElement('div')
+    var searchResultId = 'searchResult_' + index;
+    searchResultContainer.id = searchResultId
+
+    var posterImg = document.createElement('img');
+    posterImg.src = poster;
+    posterImg.alt = `${title} poster`;
+    var titleHTML = document.createElement('p');
+    titleHTML.textContent = title;
+
+    searchResultContainer.appendChild(posterImg)
+    searchResultContainer.appendChild(titleHTML)
+    previousSearchesContainer.appendChild(searchResultContainer);
+  });
+};
+
+window.onload = function() {
+  displayPreviousSearches();
+}
