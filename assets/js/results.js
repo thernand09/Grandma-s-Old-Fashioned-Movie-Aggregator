@@ -15,17 +15,23 @@ function displayLocalStorage() {
 
   // Fill the card with data
   card.innerHTML = `
-      <img class="poster column is-one-fifth" src="${omdbStoredObject.Poster}">
-      <div class="card-text column is-four-fifths">
+      <img class="poster column is-2" src="${omdbStoredObject.Poster}">
+      <div class="card-info column is-3">
         <h2 class="card-title">${omdbStoredObject.Title}</h2>
-        <p class="year">Year: ${omdbStoredObject.Year}</p>
-        <p class="ratings-title">Ratings</p>
+        <p class="year">${omdbStoredObject.Year}</p>
+        <p class="runtime">Runtime: ${omdbStoredObject.Runtime}</p>
         <div class="ratings">
           <p class="imdbRating">IMDB rating: ${omdbStoredObject.Ratings[0].Value}</p>
           <p class="rtRating">Rotten Tomatoes: ${omdbStoredObject.Ratings[1].Value}</p>
           <p class="metacriticRating">Metacritic: ${omdbStoredObject.Ratings[2].Value}</p>
         </div>
-        <p class="runtime">Runtime: ${omdbStoredObject.Runtime}</p>
+      <div class="streaming column is-3">
+        <p class="plot">${1}</p>
+      </div>
+      </div>
+      <div class="card-plot column is-4">
+        <p class="plot">${omdbStoredObject.Plot}</p>
+      </div>
   `;
 
   // Get the searchResults section and append the card to it
