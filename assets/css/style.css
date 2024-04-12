@@ -7,28 +7,34 @@
     --accent-salmon: #FFAFCC;
     --accent-powder-blue: #BDE0FE;
     --accent-sky-blue: #A2D2FF;
+    background-color: var(--accent-powder-blue);
 }
 
 header {
     background-color: var(--main-pink);
-    margin: -3rem 0 -3.24rem 0;
-    padding: -2rem;
+    max-height: 23vh;
 }
 
 .hero-body {
     display: inline-flex;
     justify-content: center;
+    width: 100%;
+    margin-bottom: -5rem;
+    padding-bottom: -5rem;
+    background-color: var(--main-pink);
 }
 
 .hero-image {
-    max-height: 11rem;
+    max-height: 8rem;
+    background-color: var(--main-pink);
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--accent-sky-blue);
     text-align: center;
-    margin: 2% 2.5% 2% 2.5%;
+    margin: 1% 2.5% 1% 2.5%;
+    background-color: var(--main-purple);
 }
 
 .navbar {
@@ -36,9 +42,11 @@ header {
     background-color: var(--main-purple);
     align-items: center;
     border-top: 0.25rem var(--accent-powder-blue) solid;
-    border-bottom: 0.25rem var(--accent-powder-blue) solid;
+    border-bottom: 0.25rem var(--main-pink) solid;
     display: flex;
     justify-content: space-between;
+    margin: -0.35rem 0 0 0;
+    max-height: 11vh
 }
 
 .search-bar {
@@ -49,7 +57,6 @@ header {
 }
 
 .search-bar:hover {
-    background-color: var(--accent-powder-blue);
     color: var(--main-purple);
     box-shadow: 1px 1px 6px var(--accent-salmon);
 }
@@ -69,14 +76,146 @@ input {
 }
 
 #modal-submit:hover {
-    background-color: var(--accent-powder-blue);
     box-shadow: 1px 1px 5px var(--main-purple);
 
+}
+
+#previous-results {
+    height: 60.5vh;
+}
+
+.searchResult {
+    align-content: center;
+    padding: 2vh 1vh 1vh 1vh
+}
+
+.searchTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.posterContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.poster {
+    max-height: 53vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer {
+    max-height: 4vh;
+    padding: 2.5%;
+    text-align: center;
+    width: 100vw;
 }
 
 @media screen and (min-width:801px) {
     #hero-narrow {
         display: none;
+    }
+}
+@media screen and (max-width:1250px) {
+    #previous-results {
+        height: 61vh;
+    }
+}
+@media screen and (max-width:1192px) {
+    #previous-results {
+        height: 61.2vh;
+    }
+}
+@media screen and (max-width:1168px) {
+    #previous-results {
+        height: 61.3vh;
+        
+    }
+}
+@media screen and (max-width:1152px) {
+    #previous-results {
+        height: 61.4vh;
+    }
+}
+@media screen and (max-width:1138px) {
+    #previous-results {
+        height: 61.45vh;
+    }
+}
+@media screen and (max-width:1128px) {
+    #previous-results {
+        height: 61.55vh;
+    }
+}
+@media screen and (max-width:1120px) {
+    #previous-results {
+        height: 61.65vh;
+    }
+}
+@media screen and (max-width:1100px) {
+    #previous-results {
+        height: 61.75vh;
+    }
+}
+@media screen and (max-width:1075px) {
+    #previous-results {
+        height: 62vh;
+    }
+}
+@media screen and (max-width:1050px) {
+    #previous-results {
+        height: 62.3vh;
+    }
+}
+@media screen and (max-width:1025px) {
+    #previous-results {
+        height: 62.55vh;
+    }
+}
+@media screen and (max-width:1000px) {
+    #previous-results {
+        height: 62.75vh;
+    }
+}
+@media screen and (max-width:975px) {
+    #previous-results {
+        height: 63vh;
+    }
+}
+@media screen and (max-width:950px) {
+    #previous-results {
+        height: 63.22vh;
+    }
+}
+@media screen and (max-width:925px) {
+    #previous-results {
+        height: 63.35vh;
+    }
+}
+@media screen and (max-width:900px) {
+    #previous-results {
+        height: 64.25vh;
+    }
+    #searchResult_3 {
+        display: none;
+    }
+    #footer {
+        font-size: 14px;
+        padding: 2.4%;
+        text-align: center;
+        width: 100vw;
+    }
+}
+@media screen and (max-width:850px) {
+    #previous-results {
+        height: 64.45vh;
+    }
+}
+@media screen and (max-width:825px) {
+    #previous-results {
+        height: 64.625vh;
     }
 }
 @media screen and (max-width:800px) {
@@ -105,6 +244,38 @@ input {
         text-align: right;
         margin-right: 5%;
     }
+    #previous-results {
+        height: 65vh;
+    }
+    #footer {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:775px) {
+    #previous-results {
+        height: 65.25vh;
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-between;
+    }
+    #searchResult_2 {
+        display: none;
+    }
+}
+@media screen and (max-width:725px) {
+    #previous-results {
+        height: 65.7vh;
+    }
+}
+@media screen and (max-width:700px) {
+    #previous-results {
+        height: 65.85vh;
+    }
+}
+@media screen and (max-width:700px) {
+    #previous-results {
+        height: 65.95vh;
+    }
 }
 @media screen and (max-width:620px) {
     .title {
@@ -113,29 +284,55 @@ input {
     .search-bar {
         font-size: 0.8rem;
     }
+    #previous-results {
+        height: 66.5vh;
+    }
 }
 @media screen and (max-width:575px) {
     .title {
         font-size: 1.15rem;
-        margin: 0.5%
+        margin: 0.5%;
     }
     .search-bar {
         font-size: 0.75rem;
     }
-    header {
-        margin: -3rem 0 -3rem 0;
-        padding: 0
+    #previous-results {
+        height: 67.25vh;
     }
 }
 @media screen and (max-width:535px) {
     .title {
-        font-size: 1.15rem;
-        margin: 0 0 0 0.5rem
+        font-size: 1rem;
+        margin: 0 0 0 0.5rem;
+        text-wrap: wrap;
     }
     .search-bar {
         font-size: 0.75rem;
     }
     .navbar {
         text-justify: center;
+    }
+    #previous-results {
+        height: 67.875vh;
+    }
+}
+@media screen and (max-width:485px) {
+    .title {
+        font-size: 1.25rem;
+        margin: 0 0 0 0.75rem
+    }
+    #grandmas {
+        display: none;
+    }
+    #previous-results {
+        height: 67.85vh;
+    }
+}
+@media screen and (max-width:465px) {
+    #previous-results {
+        height: 67.85vh;
+    }
+    #searchResult_1 {
+        display: none;
     }
 }

@@ -6,6 +6,7 @@ backButton.addEventListener('click', function() {
 
 function displayLocalStorage() {
   var omdbStoredData = localStorage.getItem('omdbData');
+  console.log(omdbStoredData)
   var omdbStoredObject = JSON.parse(omdbStoredData);
 
   // Create a card element
@@ -13,6 +14,7 @@ function displayLocalStorage() {
   card.classList.add('columns');
   card.classList.add('card');
 
+  console.log(omdbStoredObject)
   // Fill the card with data
   card.innerHTML = `
       <img class="poster column is-2" src="${omdbStoredObject.Poster}">
