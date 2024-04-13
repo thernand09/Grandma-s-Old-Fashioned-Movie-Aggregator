@@ -8,10 +8,10 @@ modalButtonSubmit.addEventListener('click', function() {
   console.log('Modal submit button pressed')
 
   const movieTitleInput = document.getElementById('movie-title').value.trim();
-  const movieImdbIdInput = document.getElementById('imdb-id').value.trim();
+  const movieYearInput = document.getElementById('movie-year').value.trim();
 
-  fetchOmdb(movieTitleInput, movieImdbIdInput);
-  window.location.href = '/results.html';
+  fetchOmdb(movieTitleInput, movieYearInput);
+  //window.location.href = '/results.html';
 });
 
 // - Modal form script
@@ -63,15 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // - OMDB-API
 // We'll want to get title (omdbData.title), year (omdbData.title), ratings (IDMB: (omdbData.ratings[0]),
 // RT: (omdbData.ratings[1]), Metacritic: (omdbData.ratings[2])), and maybe runtime? (omdbData.runtime)
-function fetchOmdb (movieTitleInput, movieImdbIdInput) {
+function fetchOmdb (movieTitleInput, movieYearInput) {
   let omdbUrl
-  let omdbPosterUrl
-  if (movieImdbIdInput) {
-    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
-    omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
+  if (movieYearInput) {
+    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}&y=${movieYearInput}`
   } else {
     omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
-    omdbPosterUrl = `http://img.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
   }
 
   fetch(omdbUrl)
@@ -92,14 +89,15 @@ function fetchOmdb (movieTitleInput, movieImdbIdInput) {
 
         return
       } else {
-        omdbHistory.unshift(data)
+        omdbDataHistory.unshift(data)
 
         if (omdbDataHistory.length > 4) {
           omdbDataHistory = searchHistory.slice(0, 4);
         }
-
         var omdbData = JSON.stringify(data)
         localStorage.setItem('omdbData', omdbData)
+
+        localStorage.setItem('omdbDataHistory', JSON.stringify(omdbDataHistory))
       }
     })
     .catch(error => {
@@ -125,26 +123,33 @@ function fetchOmdb (movieTitleInput, movieImdbIdInput) {
 
 // ------------------------- Displaying Past Search Data for Flavor -------------------------------------
 function displayPreviousSearches() {
-  var previousSearchesContainer = document.getElementById('previousSearches');
+  var previousSearchesContainer = document.getElementById('previous-results');
 
   previousSearchesContainer.innerHTML = '';
 
-  omdbDataHistory.forEach(function(omdbData) {
+  omdbDataHistory.forEach(function(omdbData, index) {
     var poster = omdbData.Poster;
     var title = omdbData.Title;
 
     var searchResultContainer = document.createElement('div')
     var searchResultId = 'searchResult_' + index;
     searchResultContainer.id = searchResultId
+    searchResultContainer.classList.add('searchResult')
+    searchResultContainer.classList.add('column')
 
+    var posterContainer = document.createElement('div')
+    posterContainer.classList.add('posterContainer')
     var posterImg = document.createElement('img');
     posterImg.src = poster;
     posterImg.alt = `${title} poster`;
+    posterImg.classList.add('poster');
     var titleHTML = document.createElement('p');
     titleHTML.textContent = title;
+    titleHTML.classList.add('searchTitle');
 
-    searchResultContainer.appendChild(posterImg)
-    searchResultContainer.appendChild(titleHTML)
+    posterContainer.appendChild(posterImg);
+    searchResultContainer.appendChild(titleHTML);
+    searchResultContainer.appendChild(posterContainer);
     previousSearchesContainer.appendChild(searchResultContainer);
   });
 };

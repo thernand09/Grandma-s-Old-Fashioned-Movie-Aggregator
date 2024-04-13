@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css"/>
   </head>
-<body>
+<body id="content-container">
     <!-- Your content goes here -->
-    <header class="hero">
+    <header>
         <div class="hero-head">
 
         </div>
@@ -20,8 +20,8 @@
         </div>
     </header>
     <nav class="navbar">
-        <h3 class="title has-text-left">Grandma's Old-Fashioned Movie Agregator</h3>
-        <button class="navbar-item button search-bar js-modal-trigger" id="modal-call-button" data-target="modal">Create a Search</button>
+        <h3 class="pageTitle"><span id="grandmas">Grandma's Old-Fashioned </span>Movie Agregator</h3>
+        <button class="navbar-item button search-bar js-modal-trigger" id="modal-call-button" data-target="modal">Search</button>
     </nav>
 
     <main>
@@ -32,8 +32,8 @@
                     <div>
                         <label for="movie-title">Movie title *</label>
                         <input type="text" name="Movie" class="modal-input" id="movie-title" placeholder="Movie title" required>
-                        <label for="imdb-id">Movie title</label>
-                        <input type="text" name="Movie" class="modal-input" id="imdb-id" placeholder="IMDB ID">
+                        <label for="movie-year">Year</label>
+                        <input type="text" name="Year" class="modal-input" id="movie-year" placeholder="YYYY">
                     </div>
                     <button class="button" type="submit" id="modal-submit">Search</button>
                 </div>
@@ -41,17 +41,14 @@
             <button class="modal-close is-large" aria-label="close"></button>
         </modal>
 
-        <section id="previous-results">
-            <img alt="poster previous results">
-            <img alt="poster previous results">
-            <img alt="poster previous results">
-            <img alt="poster previous results">
+        <section class="columns" id="previous-results">
+
         </section>
 
     </main>
     
-    <footer>
-        <p>&copy; Grandma's Old-Fashioned Web Development. All rights reserved.</p>
+    <footer id="footer">
+        <p id="end-tag">&copy; Grandma's Old-Fashioned Web Development</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

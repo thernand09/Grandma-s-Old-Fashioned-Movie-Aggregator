@@ -9,34 +9,52 @@
     --accent-sky-blue: #A2D2FF;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent-powder-blue);
+}
+
 header {
     background-color: var(--main-pink);
-    margin: -3rem 0 -3.24rem 0;
-    padding: -2rem;
+    height: fit-content;
+    margin-bottom: -0.5%;
 }
 
 .hero-body {
     display: inline-flex;
     justify-content: center;
+    width: 100%;
+    background-color: var(--main-pink);
 }
 
 .hero-image {
-    max-height: 11rem;
+    max-height: 22vh;
+    background-color: var(--main-pink);
 }
 
-.title {
-    font-size: 1.5rem;
+.pageTitle {
+    font-size: 1.25rem;
     color: var(--accent-sky-blue);
     text-align: center;
-    margin: 2% 2.5% 2% 2.5%;
+    margin: 1% 2.5% 1% 2.5%;
+    background-color: var(--main-purple);
+    font-weight: 500;
+}
+
+#grandmas {
+    background-color: var(--main-purple);
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
     width: 100%;
+    height: auto;
     background-color: var(--main-purple);
     align-items: center;
     border-top: 0.25rem var(--accent-powder-blue) solid;
-    border-bottom: 0.25rem var(--accent-powder-blue) solid;
+    border-bottom: 0.25rem var(--main-pink) solid;
     display: flex;
     justify-content: space-between;
 }
@@ -49,9 +67,16 @@ header {
 }
 
 .search-bar:hover {
-    background-color: var(--accent-powder-blue);
     color: var(--main-purple);
     box-shadow: 1px 1px 6px var(--accent-salmon);
+    background-color: var(--accent-powder-blue);
+}
+
+main {
+    width: 100vw;
+    background-color: var(--accent-powder-blue);
+    display: flex;
+    justify-content: space-between;
 }
 
 .box {
@@ -69,9 +94,50 @@ input {
 }
 
 #modal-submit:hover {
-    background-color: var(--accent-powder-blue);
     box-shadow: 1px 1px 5px var(--main-purple);
 
+}
+
+#previous-results {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchResult {
+    align-content: center;
+    padding: 2vh 1vh 1vh 1vh;
+}
+
+.searchTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.posterContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.poster {
+    max-height: 53vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer {
+    padding-top: 200%;
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    z-index: -20;
+    background-color: var(--accent-powder-blue);
+}
+
+#end-tag {
+    color: var(--main-purple);
 }
 
 @media screen and (min-width:801px) {
@@ -79,11 +145,21 @@ input {
         display: none;
     }
 }
+@media screen and (max-width:1000px) {
+    #searchResult_3 {
+        display: none;
+    }
+}
+@media screen and (max-width:900px) {
+    #footer {
+        font-size: 14px;
+    }
+}
 @media screen and (max-width:800px) {
     #hero-wide {
         display: none;
     }
-    .title {
+    .pageTitle {
         font-size: 1.25rem;
     }
     .search-bar {
@@ -106,8 +182,13 @@ input {
         margin-right: 5%;
     }
 }
+@media screen and (max-width:775px) {
+    #searchResult_2 {
+        display: none;
+    }
+}
 @media screen and (max-width:620px) {
-    .title {
+    .pageTitle {
         font-size: 1.175rem;
     }
     .search-bar {
@@ -115,27 +196,52 @@ input {
     }
 }
 @media screen and (max-width:575px) {
-    .title {
+    .pageTitle {
         font-size: 1.15rem;
-        margin: 0.5%
+        margin: 0.5%;
     }
     .search-bar {
         font-size: 0.75rem;
-    }
-    header {
-        margin: -3rem 0 -3rem 0;
-        padding: 0
     }
 }
 @media screen and (max-width:535px) {
-    .title {
-        font-size: 1.15rem;
-        margin: 0 0 0 0.5rem
+    .pageTitle {
+        font-size: 1rem;
+        margin: 0 0 0 0.5rem;
+        text-wrap: wrap;
     }
     .search-bar {
         font-size: 0.75rem;
     }
+}
+@media screen and (max-width:500px) {
+    #searchResult_1 {
+        display: none;
+    }
+}
+@media screen and (max-width:485px) {
+    .pageTitle {
+        font-size: 1.25rem;
+        margin: 0 0 0 0.75rem
+    }
+    #grandmas {
+        display: none;
+    }
+}
+@media screen and (max-width:375px) {
+    #footer {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:316px) {
+    .pageTitle {
+        font-size: 16px;
+        margin-right: 7.5%;
+    }
+    .hero-body {
+        width: 80%
+    }
     .navbar {
-        text-justify: center;
+        justify-content: left;
     }
 }
