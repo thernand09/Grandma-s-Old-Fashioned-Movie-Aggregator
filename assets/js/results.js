@@ -23,13 +23,13 @@ function displayLocalStorage() {
         <p class="year">${omdbStoredObject.Year}</p>
         <p class="runtime">Runtime: ${omdbStoredObject.Runtime}</p>
         <div class="ratings">
-          <p class="imdbRating">IMDB rating: ${omdbStoredObject.Ratings[0].Value}</p>
-          <p class="rtRating">Rotten Tomatoes: ${omdbStoredObject.Ratings[1].Value}</p>
-          <p class="metacriticRating">Metacritic: ${omdbStoredObject.Ratings[2].Value}</p>
+          <p class="imdbRating">IMDB rating: ${omdbStoredObject.Ratings[0] ? omdbStoredObject.Ratings[0].Value : 'N/A'}</p>
+          <p class="rtRating">Rotten Tomatoes: ${omdbStoredObject.Ratings[1] ? omdbStoredObject.Ratings[1].Value : 'N/A'}</p>
+          <p class="metacriticRating">Metacritic: ${omdbStoredObject.Ratings[2] ? omdbStoredObject.Ratings[2].Value : 'N/A'}</p>
         </div>
+      </div>
       <div class="streaming column is-3">
         <p class="plot">${1}</p>
-      </div>
       </div>
       <div class="card-plot column is-4">
         <p class="plot">${omdbStoredObject.Plot}</p>

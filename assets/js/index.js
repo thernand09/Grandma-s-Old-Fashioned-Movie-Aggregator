@@ -8,9 +8,9 @@ modalButtonSubmit.addEventListener('click', function() {
   console.log('Modal submit button pressed')
 
   const movieTitleInput = document.getElementById('movie-title').value.trim();
-  const movieImdbIdInput = document.getElementById('imdb-id').value.trim();
+  const movieYearInput = document.getElementById('movie-year').value.trim();
 
-  fetchOmdb(movieTitleInput, movieImdbIdInput);
+  fetchOmdb(movieTitleInput, movieYearInput);
   //window.location.href = '/results.html';
 });
 
@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // - OMDB-API
 // We'll want to get title (omdbData.title), year (omdbData.title), ratings (IDMB: (omdbData.ratings[0]),
 // RT: (omdbData.ratings[1]), Metacritic: (omdbData.ratings[2])), and maybe runtime? (omdbData.runtime)
-function fetchOmdb (movieTitleInput, movieImdbIdInput) {
+function fetchOmdb (movieTitleInput, movieYearInput) {
   let omdbUrl
-  if (movieImdbIdInput) {
-    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieImdbIdInput}`
+  if (movieYearInput) {
+    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}&y=${movieYearInput}`
   } else {
     omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
   }
@@ -124,8 +124,6 @@ function fetchOmdb (movieTitleInput, movieImdbIdInput) {
 // ------------------------- Displaying Past Search Data for Flavor -------------------------------------
 function displayPreviousSearches() {
   var previousSearchesContainer = document.getElementById('previous-results');
-  console.log(omdbDataHistory)
-  console.log(omdbDataHistory.length)
 
   previousSearchesContainer.innerHTML = '';
 
