@@ -87,7 +87,6 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
         localStorage.setItem('omdbDataHistory', JSON.stringify(omdbDataHistory))
 
         callbackWatchMode(data);
-        window.location.href = '/results.html'; 
       } else {
         // We display an error message to the console
         console.log("No media found. Please try a new search.")
@@ -125,8 +124,9 @@ function fetchWatchMode(imdbID) {
       return response.json();
     })
     .then(data => {
-      console.log('WatchMode', data);
+      localStorage.removeItem('watchModeData');
       localStorage.setItem('watchModeData', JSON.stringify(data));
+      window.location.href = '/results.html'; 
     })
     .catch(error => {
       console.error('There was a problem with the WatchMode fetch operation:', error);
