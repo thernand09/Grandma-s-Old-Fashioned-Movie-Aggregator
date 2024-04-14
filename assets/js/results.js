@@ -17,14 +17,16 @@ function displayLocalStorage() {
   card.classList.add('card');
 
   var streamingInfo = '';
-  watchModeData.forEach(function(item) {
-    if (item.price === null) {
+  var streamingServiceNullPrice = watchModeData.filter(item => item.price === null);
+  if (streamingServiceNullPrice.length === 0) {
+    streamingInfo = `<p class="streamingInfo">No streaming services found</p>`;
+  } else {
+    streamingServiceNullPrice.forEach(function(item) {
       streamingInfo += `<p class="streamingInfo">${item.name} in ${item.region}</p>`;
-    }
-  });
+    });
+  }
 
-
-  // Fill the card with data
+  // Fill the card with our data
   card.innerHTML = `
       <img class="poster column is-3" src="${omdbStoredObject.Poster}">
       <div class="card-info column is-3">
@@ -49,10 +51,7 @@ function displayLocalStorage() {
   var searchResults = document.getElementById('searchResults');
   searchResults.appendChild(card);
 }
-
+// Displaying our local storage on page load
 window.onload = function() {
   displayLocalStorage();
 };
-
-// For OMDB, we'll want to get title (omdbData.title), year (omdbData.title), ratings (IDMB: (omdbData.ratings[0]),
-// RT: (omdbData.ratings[1]), Metacritic: (omdbData.ratings[2])), and maybe runtime? (omdbData.runtime)
