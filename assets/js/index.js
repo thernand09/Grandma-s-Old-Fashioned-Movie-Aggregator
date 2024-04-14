@@ -169,7 +169,22 @@ function displayPreviousSearches() {
     previousSearchesContainer.appendChild(searchResultContainer);
   });
 };
-// On load we call our function to display our previous searches
+// Function that displays a message asking the user to make a search when we detect that there
+// is no local storage data (no previous searches have been made)
+function displaySearchMessage() {
+  // We check if there is no local storage data
+  if (omdbDataHistory.length === 0) {
+    // Then create the message elements and append it to the page
+    var messageHTML = document.createElement('div');
+    messageHTML.textContent = 'Please make a search using the search button';
+    messageHTML.classList.add('search-message');
+    const previousResults = document.getElementById('previous-results');
+    previousResults.appendChild(messageHTML);
+  }
+}
+
+// On load we call our function to display our previous searches or our message if no searches are found
 window.onload = function() {
   displayPreviousSearches();
+  displaySearchMessage();
 }

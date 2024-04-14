@@ -126,6 +126,13 @@ input {
     justify-content: space-around;
 }
 
+.search-message {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+
 #footer {
     padding-top: 200%;
     text-align: center;
