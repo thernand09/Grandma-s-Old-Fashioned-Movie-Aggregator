@@ -110,28 +110,12 @@ main {
     font-weight: 700;
 }
 
-.year {
-
-}
-
 .runtime {
     margin-top: 2%;
 }
 
 .ratings{
     margin-top: 2%;
-}
-
-.imdbRating {
-
-}
-
-.rtRating {
-
-}
-
-.metacriticRating {
-
 }
 
 .card-plot {
@@ -141,6 +125,11 @@ main {
 
 .streaming {
     align-content: center;
+}
+
+.streamingInfo {
+    margin-bottom: 7.5%;
+    line-height: 100%;
 }
 
 #footer{

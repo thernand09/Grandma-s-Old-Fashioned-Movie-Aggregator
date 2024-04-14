@@ -17,11 +17,8 @@ function displayLocalStorage() {
   card.classList.add('card');
 
   var streamingInfo = '';
-  watchModeData.forEach(function(item, index) {
+  watchModeData.forEach(function(item) {
     if (item.price === null) {
-      if (index !== 0 && streamingInfo !== '') {
-        streamingInfo += ', ';
-      }
       streamingInfo += `<p class="streamingInfo">${item.name} in ${item.region}</p>`;
     }
   });
