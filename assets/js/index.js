@@ -74,20 +74,11 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
     // Then we take the data
     .then(data => {
       // And if it doesn't have data
-      if (data.length === 0) {
-        // We display an error message to the DOM
-        const sectionOne = document.getElementById('section1');
-        const errorMessage = document.createElement('p');
-        errorMessage.textContent = "No media found. Please try a new search.";
-        sectionOne.appendChild(errorMessage);
-
-        return
-      // But if it does return data, we add the new OMDB data to the beginning of our results history array
-      } else {
+      if (data.Response === "True") {
         omdbDataHistory.unshift(data)
         // If our data array is now longer than four entries, we only keep the most recent four
         if (omdbDataHistory.length > 4) {
-          omdbDataHistory = searchHistory.slice(0, 4);
+          omdbDataHistory = omdbDataHistory.slice(0, 4);
         }
         // We store the single most recent data to local storage for our results page
         var omdbData = JSON.stringify(data)
@@ -96,6 +87,11 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
         localStorage.setItem('omdbDataHistory', JSON.stringify(omdbDataHistory))
 
         callbackWatchMode(data);
+        window.location.href = '/results.html'; 
+      } else {
+        // We display an error message to the console
+        console.log("No media found. Please try a new search.")
+        window.alert("No media found. Please try a new search.")
       }
     })
     // Return error message to the console from the throw function above
@@ -109,19 +105,16 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
 const modalButtonSubmit = document.getElementById('modal-submit');
 
 modalButtonSubmit.addEventListener('click', function() {
-  console.log('Modal submit button pressed')
-
   const movieTitleInput = document.getElementById('movie-title').value.trim();
   const movieYearInput = document.getElementById('movie-year').value.trim();
 
   fetchOmdb(movieTitleInput, movieYearInput, function(omdbData) {
     const imdbID = omdbData.imdbID;
-    fectchWatchMode(imdbID);
+    fetchWatchMode(imdbID);
   });
-  //window.location.href = '/results.html';
 });
 
-function fectchWatchMode(imdbID) {
+function fetchWatchMode(imdbID) {
   const watchModeUrl = `https://api.watchmode.com/v1/title/${imdbID}/sources/?apiKey=${WATCHMODE_API_KEY}`;
 
   fetch(watchModeUrl)
