@@ -3,7 +3,7 @@ const backButton = document.getElementById('back-button');
 backButton.addEventListener('click', function() {
   window.location.href = '/index.html';
 });
-
+// Accessing the search result in local storage and displaying it to the DOM
 function displayLocalStorage() {
   var omdbStoredData = localStorage.getItem('omdbData');
   var omdbStoredObject = JSON.parse(omdbStoredData);
@@ -28,8 +28,10 @@ function displayLocalStorage() {
 
   // Fill the card with our data
   card.innerHTML = `
-      <img class="poster column is-3" src="${omdbStoredObject.Poster}">
-      <div class="card-info column is-3">
+      <div class="poster-container column is-4">
+        <img class="poster" src="${omdbStoredObject.Poster}">
+      </div>
+      <div class="card-info column is-4">
         <h2 class="card-title">${omdbStoredObject.Title}</h2>
         <p class="year">${omdbStoredObject.Year}</p>
         <p class="runtime">Runtime: ${omdbStoredObject.Runtime}</p>
@@ -39,10 +41,8 @@ function displayLocalStorage() {
           <p class="metacriticRating">Metacritic: ${omdbStoredObject.Ratings[2] ? omdbStoredObject.Ratings[2].Value : 'N/A'}</p>
         </div>
       </div>
-      <div class="streaming column is-2">
-        ${streamingInfo}
-      </div>
       <div class="card-plot column is-4">
+        ${streamingInfo}
         <p class="plot">${omdbStoredObject.Plot}</p>
       </div>
   `;

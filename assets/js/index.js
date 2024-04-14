@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --------------------------- API Fetch Functions ---------------------------------
 
-// - OMDB-API
+// - OMDB-API -------------------------------------------------------------
 // Passing the input data to the function
 function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
   // Declaring our API URL with title and year or just title
@@ -100,22 +100,25 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
 }
 
 // Adding an event listener to our modal button and fetching API data using the inputs from the
-// modal form. Redirect the user to the results page automatically
+// modal form
 const modalButtonSubmit = document.getElementById('modal-submit');
 
 modalButtonSubmit.addEventListener('click', function() {
   const movieTitleInput = document.getElementById('movie-title').value.trim();
   const movieYearInput = document.getElementById('movie-year').value.trim();
-
+  // Passing the input data to the OMDB function and the IMDB ID from the OMDB fetch to the WatchMode
+  // fetch function
   fetchOmdb(movieTitleInput, movieYearInput, function(omdbData) {
     const imdbID = omdbData.imdbID;
     fetchWatchMode(imdbID);
   });
 });
 
+// - WatchMode API Fetch Function ---------------------------------------------
 function fetchWatchMode(imdbID) {
+  // Using the IMDB ID from our OMDB result so that it will always fetch for the same title
   const watchModeUrl = `https://api.watchmode.com/v1/title/${imdbID}/sources/?apiKey=${WATCHMODE_API_KEY}`;
-
+  // Fetching data and either saving to local storage and relocating to the results page or returning an error
   fetch(watchModeUrl)
     .then(response => {
       if (!response.ok) {
