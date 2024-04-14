@@ -29,7 +29,7 @@ function displayLocalStorage() {
 
   // Fill the card with data
   card.innerHTML = `
-      <img class="poster column is-2" src="${omdbStoredObject.Poster}">
+      <img class="poster column is-3" src="${omdbStoredObject.Poster}">
       <div class="card-info column is-3">
         <h2 class="card-title">${omdbStoredObject.Title}</h2>
         <p class="year">${omdbStoredObject.Year}</p>
@@ -40,7 +40,7 @@ function displayLocalStorage() {
           <p class="metacriticRating">Metacritic: ${omdbStoredObject.Ratings[2] ? omdbStoredObject.Ratings[2].Value : 'N/A'}</p>
         </div>
       </div>
-      <div class="streaming column is-3">
+      <div class="streaming column is-2">
         ${streamingInfo}
       </div>
       <div class="card-plot column is-4">
