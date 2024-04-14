@@ -1,20 +1,32 @@
+// Declaring our back button and making it return to our search page when pressed
 const backButton = document.getElementById('back-button');
-
 backButton.addEventListener('click', function() {
   window.location.href = '/index.html';
 });
 
 function displayLocalStorage() {
   var omdbStoredData = localStorage.getItem('omdbData');
-  console.log(omdbStoredData)
   var omdbStoredObject = JSON.parse(omdbStoredData);
 
-  // Create a card element
+  var watchModeStoredData = localStorage.getItem('watchModeData');
+  var watchModeData = JSON.parse(watchModeStoredData);
+
+  // Create the cards to display our search result
   var card = document.createElement('div');
   card.classList.add('columns');
   card.classList.add('card');
 
-  console.log(omdbStoredObject)
+  var streamingInfo = '';
+  watchModeData.forEach(function(item, index) {
+    if (item.price === null) {
+      if (index !== 0 && streamingInfo !== '') {
+        streamingInfo += ', ';
+      }
+      streamingInfo += `<p class="streamingInfo">${item.name} in ${item.region}</p>`;
+    }
+  });
+
+
   // Fill the card with data
   card.innerHTML = `
       <img class="poster column is-2" src="${omdbStoredObject.Poster}">
@@ -29,7 +41,7 @@ function displayLocalStorage() {
         </div>
       </div>
       <div class="streaming column is-3">
-        <p class="streamingIs">${1}</p>
+        ${streamingInfo}
       </div>
       <div class="card-plot column is-4">
         <p class="plot">${omdbStoredObject.Plot}</p>
