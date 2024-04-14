@@ -29,7 +29,7 @@ function displayLocalStorage() {
         </div>
       </div>
       <div class="streaming column is-3">
-        <p class="plot">${1}</p>
+        <p class="streamingIs">${1}</p>
       </div>
       <div class="card-plot column is-4">
         <p class="plot">${omdbStoredObject.Plot}</p>
