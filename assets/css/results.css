@@ -66,9 +66,9 @@ main {
 
 .content-wrapper {
     width: auto;
-    min-height: 100%;
-    margin: 2% 0 0 0;
-    padding: 0
+    min-height: 80%;
+    max-height: 90%;
+    padding-top: 2%
 }
 
 #back-button:hover {
@@ -95,9 +95,12 @@ main {
     color: var(--main-purple);
 }
 
+.poster-container {
+    justify-content: center;
+}
+
 .poster {
-    height: fit-content;
-    align-self: center;
+    width:max-content
 }
 
 .card-info {
@@ -123,20 +126,17 @@ main {
     align-content: center;
 }
 
-.streaming {
-    align-content: center;
-}
-
 .streamingInfo {
     margin-bottom: 7.5%;
     line-height: 100%;
+    font-weight: 700;
 }
 
 #footer{
-    padding-top: 100%;
     text-align: center;
     background-color: var(--accent-powder-blue);
-    position: absolute;
+    position: relative;
+    padding: 2% 0 1% 0;
     bottom: 0;
     width: 100%;
     z-index: -20;
@@ -157,5 +157,40 @@ main {
     }
     .title {
         font-size: 1.25rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+}
+@media screen and (max-width:775px) {
+    .columns {
+        display: flex
+    }
+    #footer{
+        padding: 2% 0 3% 0;
+    }
+}
+@media screen and (max-width:650px) {
+    #footer{
+        padding: 2% 0 4% 0;
+    }
+}
+@media screen and (max-width:575px) {
+    .columns {
+        display: block;
+    }
+    .poster-container {
+        display: flex;
+        justify-self: center;
+    }
+    #footer{
+        padding: 2% 0 2% 0;
+    }
+}
+@media screen and (max-width:400px) {
+    .poster-container {
+        display: flex;
+        justify-self: center;
     }
 }
