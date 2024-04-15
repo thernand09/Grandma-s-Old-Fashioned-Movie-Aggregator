@@ -73,19 +73,24 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
     })
     // Then we take the data
     .then(data => {
+      console.log(data)
       // And if it doesn't have data
       if (data.Response === "True") {
-        omdbDataHistory.unshift(data)
-        // If our data array is now longer than four entries, we only keep the most recent four
-        if (omdbDataHistory.length > 4) {
-          omdbDataHistory = omdbDataHistory.slice(0, 4);
+        // If we get valid poster data
+        if (data.Poster !== "N/A") {
+          // We place the new search data at the front of our history array
+          omdbDataHistory.unshift(data)
+          // If our data array is now longer than four entries, we only keep the most recent four
+          if (omdbDataHistory.length > 4) {
+            omdbDataHistory = omdbDataHistory.slice(0, 4);
+          }
+          // We store the single most recent data to local storage for our results page
+          var omdbData = JSON.stringify(data)
+          localStorage.setItem('omdbData', omdbData)
+          // And also set our four most recent data to our local storage for our search page
+          localStorage.setItem('omdbDataHistory', JSON.stringify(omdbDataHistory))
         }
-        // We store the single most recent data to local storage for our results page
-        var omdbData = JSON.stringify(data)
-        localStorage.setItem('omdbData', omdbData)
-        // And also set our four most recent data to our local storage for our search page
-        localStorage.setItem('omdbDataHistory', JSON.stringify(omdbDataHistory))
-
+        // pass the data to our WatchMode API
         callbackWatchMode(data);
       } else {
         // We display an error message to the console
@@ -133,6 +138,7 @@ function fetchWatchMode(imdbID) {
     })
     .catch(error => {
       console.error('There was a problem with the WatchMode fetch operation:', error);
+      window.alert('There was a problem with the WatchMode fetch operation. Please try another search or ensure that you are within the search quota.');
     });
 }
 
