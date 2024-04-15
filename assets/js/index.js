@@ -66,6 +66,7 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
     // Then if we don't receive a response, we create an error message
     .then(response => {
       if (!response.ok) {
+        window.alert('There was a problem with the OMDB fetch function. Please try again.')
         throw new Error('OMDB - Network response was not ok');
       }
       // If we do receive a response, we turn it into a JS object
