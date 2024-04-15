@@ -78,6 +78,8 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
       if (data.Response === "True") {
         // If we get valid poster data
         if (data.Poster !== "N/A") {
+          // Turning http:// to https://
+          data.Poster = data.Poster.replace(/^http:\/\//i, 'https://');
           // We place the new search data at the front of our history array
           omdbDataHistory.unshift(data)
           // If our data array is now longer than four entries, we only keep the most recent four
