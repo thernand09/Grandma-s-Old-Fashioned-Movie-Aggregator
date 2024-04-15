@@ -136,7 +136,7 @@ function fetchWatchMode(imdbID) {
     .then(data => {
       localStorage.removeItem('watchModeData');
       localStorage.setItem('watchModeData', JSON.stringify(data));
-      window.location.href = '/Project-1/results.html'; 
+      window.location.href = '/results.html'; 
     })
     .catch(error => {
       console.error('There was a problem with the WatchMode fetch operation:', error);
