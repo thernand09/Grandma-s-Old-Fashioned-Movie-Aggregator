@@ -1,7 +1,7 @@
 // Declaring our back button and making it return to our search page when pressed
 const backButton = document.getElementById('back-button');
 backButton.addEventListener('click', function() {
-  window.location.href = '/index.html';
+  window.location.href = './index.html';
 });
 // Accessing the search result in local storage and displaying it to the DOM
 function displayLocalStorage() {
