@@ -57,9 +57,9 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
   // Declaring our API URL with title and year or just title
   let omdbUrl
   if (movieYearInput) {
-    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}&y=${movieYearInput}`
+    omdbUrl = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}&y=${movieYearInput}`
   } else {
-    omdbUrl = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
+    omdbUrl = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieTitleInput}`
   }
   // Fetching the data from the API
   fetch(omdbUrl)

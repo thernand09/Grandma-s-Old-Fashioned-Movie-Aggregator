@@ -30,7 +30,7 @@ Created by: [thernand09](https://github.com/thernand09), [ambergandar](https://g
 
 [Git Hub Repository](https://github.com/thernand09/Project-1)
 
-[Live Task Board Page](https://thernand09.github.io/Project-1/)
+[Live Movie Aggregator Page](https://thernand09.github.io/Project-1/)
 
 ## Screenshot of Completed Site Build
 
