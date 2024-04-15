@@ -74,7 +74,7 @@ This project was completed using [Git Bash](https://git-scm.com/about), [Visual 
 
 ## HTML Elements
 
-
+On the search/landing page and the results page, we utilized Bulma's column system to format our HTML elements within the page. We also a jQuery modal form on the search page that provides a seamless search experience for the user. 
 
 ## CSS Elements
 
