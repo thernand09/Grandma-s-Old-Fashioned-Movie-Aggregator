@@ -73,7 +73,6 @@ function fetchOmdb (movieTitleInput, movieYearInput, callbackWatchMode) {
     })
     // Then we take the data
     .then(data => {
-      console.log(data)
       // And if it doesn't have data
       if (data.Response === "True") {
         // If we get valid poster data
