@@ -145,7 +145,7 @@ input {
 }
 
 #end-tag {
-    color: var(--main-purple);
+    color: #5e2e77;
 }
 
 @media screen and (min-width:801px) {
