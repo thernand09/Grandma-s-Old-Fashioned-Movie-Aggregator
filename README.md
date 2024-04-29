@@ -28,9 +28,9 @@ Created by: [thernand09](https://github.com/thernand09), [ambergandar](https://g
 
 **Complete**
 
-[Git Hub Repository](https://github.com/thernand09/Project-1)
+[Git Hub Repository](https://github.com/thernand09/Grandma-s-Old-Fashioned-Movie-Aggregator)
 
-[Live Movie Aggregator Page](https://thernand09.github.io/Project-1/)
+[Live Movie Aggregator Page](https://thernand09.github.io/Grandma-s-Old-Fashioned-Movie-Aggregator/)
 
 ## Screenshot of Completed Site Build
 
