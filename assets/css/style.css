@@ -113,6 +113,7 @@ input {
     text-align: center;
     font-weight: 700;
     font-size: 1.25rem;
+    color: var(--main-purple);
 }
 
 .posterContainer {
@@ -144,7 +145,7 @@ input {
 }
 
 #end-tag {
-    color: var(--main-purple);
+    color: #5e2e77;
 }
 
 @media screen and (min-width:801px) {
